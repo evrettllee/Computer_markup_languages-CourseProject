@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: initial;
+}
+
+.Catalog {
+  font-size: 40px;
+  text-align: center;
+}
+
+.Container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.Container a {
+  display: inline-block;
+}
+
+.Item {
+  display: flex;
+  width: 95%;
+  height: 600px;
+  align-items: center;
+  border-bottom: 1px solid #bbbbbb;
+}
+.Item p {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.Item h4 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.Item img {
+  width: 50%;
+  height: 80%;
+  border-radius: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.Item div {
+  padding: 5%;
+}
+
+@media (max-width: 1280px) {
+  .Item p {
+    font-size: 16px;
+  }
+  .Item h4 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 850px) {
+  .Item {
+    height: -moz-max-content;
+    height: max-content;
+    flex-direction: column;
+    padding: 15px 0;
+  }
+  .Item img {
+    width: 70%;
+  }
+  .Item div {
+    text-align: center;
+  }
+  .Item h4 {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=Catalog_Page.css.map */

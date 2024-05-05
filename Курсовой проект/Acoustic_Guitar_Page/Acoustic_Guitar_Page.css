@@ -1,0 +1,10 @@
+.Item  {
+  p:nth-child(2){ 
+  color: #bbbbbb;
+  font-size: 20px;
+}
+  p:nth-child(4) { 
+  color: #444444;
+  font-size: 28px;
+}
+}

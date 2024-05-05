@@ -1,0 +1,251 @@
+// Миксин для задания точек перелома с различными названиями классов
+@mixin bp($class) {
+  @if $class == mobile {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if $class == tablet {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $class == laptop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $class == desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else if $class == cinema {
+    @media (min-width: 1536px) {
+      @content;
+    }
+  }
+}
+
+// Миксин для установки отступов в 0
+@mixin no-margin {
+  margin: 0;
+}
+
+// Миксин для установки стилей "labotomized-owl"
+@mixin labotomized-owl {
+  * + * {
+    margin: 0.75em 0 0;
+  }
+}
+
+// Импорт шрифта из Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+// Переменные цветов и основных стилей
+$g-font-family: "Manrope", sans-serif;
+$black: #444444;
+$g-spacing: 1.5em;
+
+// Стили для body и html
+body, html {
+  font-family: $g-font-family;
+  .wrapper img {
+    width: 100%;
+    height: auto;
+  }
+  .wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: $black;
+    padding: $g-spacing;
+  }
+}
+
+// Стили о нас
+.about_us{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px 200px;
+  .about_card{
+    display: flex;
+    align-items: start;
+    max-width: 48%;
+    padding: 0 30px 30px 0;
+    .about_card_title{
+      margin-bottom: 10px;
+    }
+    img{
+      object-fit: contain;
+      max-width: 100%;
+      padding-right: 10px;
+    }
+  }
+}
+
+@media(max-width:1280px){
+  .about_us{
+    margin: 50px 100px;
+  }
+}
+
+@media(max-width:960px){
+  .about_us{
+    margin: 20px 20px;
+    flex-direction: column;
+    align-items: center;
+    .about_card{
+      max-width: 100%;
+    }
+  }
+}
+
+// Общие стили для линии
+.line {
+  border-top: 1px solid #bbbbbb;
+}
+
+// Применение миксина labotomized-owl ко всем элементам
+* {
+  @include labotomized-owl;
+}
+
+// Стили для слайдера Swiper
+.swiper {
+  padding: $g-spacing;
+
+  // Стили для обертки контента
+  .content-wrapper {
+    position: relative;
+    display: grid;
+    // grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: ".";
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+
+    // Стили для контента в слайде
+    .content {
+      padding: $g-spacing * 2 $g-spacing 0 $g-spacing;
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      margin: 0 auto;
+      color: $black;
+
+      // Стили для первого дочернего элемента
+      :first-child {
+        margin: 0;
+      }
+
+      // Стили для аватара в слайде
+      .swiper-avatar {
+        width: 100%;
+        max-width: 125px;
+        height: auto;
+        img {
+          border-radius: 500px;
+        }
+      }
+
+      // Стили для цитаты в слайде
+      .cite {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  // Стили для слайда
+  .swiper-slide {
+    margin: 0;
+    height: auto;
+    width: 100%;
+    padding: 0;
+    opacity: 0.2;
+    background: rgba(53, 45, 45, 0.336);
+    color: #00000094;
+    border-radius: 6px;
+    transition: all 0.5s ease-in-out;
+
+    // Стили для активного слайда
+    &.swiper-slide-active {
+      background: rgba(255, 255, 255, 1);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  // Стили для навигации слайдера
+  .swiper-nav-wrapper {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: auto;
+    padding-top: $g-spacing * 2;
+
+    // Стили для кнопок навигации
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: 0;
+      top: auto;
+      left: auto;
+      right: auto;
+      position: relative !important;
+      &:after {
+        display: none;
+      }
+    }
+
+    // Стили для кнопки "вперед"
+    .swiper-button-next,
+    .swiper-container-rtl .swiper-button-prev {
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='9px' height='16px' viewBox='0 0 9 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='chevron-right' fill='%23000000' fill-rule='nonzero'%3E%3Cpath d='M8.674805,7.066406 L1.924805,0.316406 C1.696288,0.105468 1.432619,0 1.133789,0 C0.834959,0 0.57129,0.105468 0.342773,0.316406 C0.114257,0.544923 0,0.808592 0,1.107422 C0,1.406251 0.114257,1.669921 0.342773,1.898438 L6.301758,7.857422 L0.342773,13.816406 C0.114257,14.044923 0,14.308592 0,14.607422 C0,14.906251 0.114257,15.169921 0.342773,15.398438 C0.465821,15.521485 0.584472,15.609375 0.69873,15.662109 C0.812989,15.714844 0.958007,15.741211 1.133789,15.741211 C1.309571,15.741211 1.454589,15.714844 1.568848,15.662109 C1.683106,15.609375 1.801757,15.521485 1.924805,15.398438 L8.674805,8.648438 C8.903321,8.419921 9.017578,8.156251 9.017578,7.857422 C9.017578,7.558592 8.903321,7.294923 8.674805,7.066406 Z' id='Path'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+      width: 20px;
+      height: 20px;
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+    }
+
+    // Стили для кнопки "назад"
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='9px' height='16px' viewBox='0 0 9 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='chevron-right' transform='translate(4.508789, 7.870605) rotate(-180.000000) translate(-4.508789, -7.870605) translate(-0.000000, -0.000000)' fill='%23000000' fill-rule='nonzero'%3E%3Cpath d='M8.674805,7.066406 L1.924805,0.316406 C1.696288,0.105468 1.432619,0 1.133789,0 C0.834959,0 0.57129,0.105468 0.342773,0.316406 C0.114257,0.544923 0,0.808592 0,1.107422 C0,1.406251 0.114257,1.669921 0.342773,1.898438 L6.301758,7.857422 L0.342773,13.816406 C0.114257,14.044923 0,14.308592 0,14.607422 C0,14.906251 0.114257,15.169921 0.342773,15.398438 C0.465821,15.521485 0.584472,15.609375 0.69873,15.662109 C0.812989,15.714844 0.958007,15.741211 1.133789,15.741211 C1.309571,15.741211 1.454589,15.714844 1.568848,15.662109 C1.683106,15.609375 1.801757,15.521485 1.924805,15.398438 L8.674805,8.648438 C8.903321,8.419921 9.017578,8.156251 9.017578,7.857422 C9.017578,7.558592 8.903321,7.294923 8.674805,7.066406 Z' id='Path'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+      width: 20px;
+      height: 20px;
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+// Стили для пагинации слайдера
+.swiper-pagination {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  position: relative !important;
+  display: block;
+  width: auto;
+  .swiper-pagination-bullets {
+    margin: 0;
+    .swiper-pagination-bullet {
+      margin: 0;
+      background: #000000 !important;
+    }
+  }
+}
+
+// Стили для активной точки пагинации
+.swiper-pagination-bullet-active {
+  transform: scale(1.5);
+}
