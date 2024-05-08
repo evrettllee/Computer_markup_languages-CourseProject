@@ -1,33 +1,3 @@
-// Миксин для задания точек перелома с различными названиями классов
-@mixin bp($class) {
-  @if $class == mobile {
-    @media (min-width: 640px) {
-      @content;
-    }
-  } @else if $class == tablet {
-    @media (min-width: 992px) {
-      @content;
-    }
-  } @else if $class == laptop {
-    @media (min-width: 1024px) {
-      @content;
-    }
-  } @else if $class == desktop {
-    @media (min-width: 1280px) {
-      @content;
-    }
-  } @else if $class == cinema {
-    @media (min-width: 1536px) {
-      @content;
-    }
-  }
-}
-
-// Миксин для установки отступов в 0
-@mixin no-margin {
-  margin: 0;
-}
-
 // Миксин для установки стилей "labotomized-owl"
 @mixin labotomized-owl {
   * + * {
@@ -117,7 +87,6 @@ body, html {
   .content-wrapper {
     position: relative;
     display: grid;
-    // grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: ".";
     width: 100%;
